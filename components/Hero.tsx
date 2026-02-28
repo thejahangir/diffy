@@ -39,7 +39,7 @@ export const Hero: React.FC = () => {
       <div className="absolute inset-0 -z-20">
           <motion.div 
             style={{ y }}
-            className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop')] bg-cover bg-center opacity-40 mix-blend-screen"
+            className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1470&auto=format&fit=crop')] bg-cover bg-center opacity-40 mix-blend-screen"
           ></motion.div>
           <div className="absolute inset-0 bg-gradient-to-b from-slate-950/50 via-slate-950/80 to-slate-950"></div>
       </div>
