@@ -43,7 +43,7 @@ export const Navbar: React.FC = () => {
   return (
     <nav 
       className={`
-        fixed z-50 transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]
+        fixed z-[100] transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]
         ${mobileMenuOpen 
           ? 'top-0 left-0 right-0 bg-slate-950/95 backdrop-blur-xl border-b border-slate-800 py-4 rounded-none w-full' 
           : isScrolled
@@ -111,7 +111,7 @@ export const Navbar: React.FC = () => {
                   key={link.label} 
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
-                  className="text-base font-medium text-slate-200 py-2 border-b border-slate-800 last:border-0"
+                  className="block w-full text-base font-medium text-slate-200 py-3 border-b border-slate-800 last:border-0 hover:text-brand-blue transition-colors"
                 >
                   {link.label}
                 </a>
