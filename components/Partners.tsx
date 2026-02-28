@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import Canolone from "../src/assets/img/canoline.png";
 
 export const Partners: React.FC = () => {
   return (
@@ -43,23 +44,15 @@ export const Partners: React.FC = () => {
                   <div className="w-full h-full flex items-center justify-center text-[0.5rem] text-black font-bold">BSDM</div>
                 </div>
              </div>
-             <div className="flex flex-col items-start text-left">
+             {/* <div className="flex flex-col items-start text-left">
                  <span className="text-[0.6rem] font-bold text-slate-300 leading-tight">Bihar Skill</span>
                  <span className="text-[0.6rem] font-bold text-slate-300 leading-tight">Development</span>
                  <span className="text-[0.6rem] font-bold text-slate-300 leading-tight">Mission</span>
-             </div>
+             </div> */}
           </div>
 
           {/* Tutorria */}
-          <div className="group cursor-pointer transition-all duration-300 hover:scale-110 grayscale hover:grayscale-0 opacity-60 hover:opacity-100">
-              <div className="flex flex-col items-center">
-                  <span className="text-[0.5rem] text-slate-500 mb-1 tracking-wider">Grow More, Score More</span>
-                  <div className="flex items-center gap-1">
-                      <div className="w-6 h-4 bg-[#F37021] rounded-t-full group-hover:shadow-[0_0_10px_rgba(243,112,33,0.5)] transition-shadow duration-300"></div>
-                      <span className="text-2xl md:text-3xl font-bold text-[#F37021] drop-shadow-none group-hover:drop-shadow-[0_0_10px_rgba(243,112,33,0.5)] transition-all duration-300">Tutorria</span>
-                  </div>
-              </div>
-          </div>
+
 
           {/* DRiP */}
           <div className="group cursor-pointer transition-all duration-300 hover:scale-110 grayscale hover:grayscale-0 opacity-60 hover:opacity-100">
@@ -80,6 +73,15 @@ export const Partners: React.FC = () => {
           {/* Puresoft Global */}
           <div className="group cursor-pointer transition-all duration-300 hover:scale-110 grayscale hover:grayscale-0 opacity-60 hover:opacity-100">
              <span className="text-xl md:text-2xl font-bold text-[#F05A28] tracking-tight drop-shadow-none group-hover:drop-shadow-[0_0_12px_rgba(240,90,40,0.6)] transition-all duration-300">PURESOFT GLOBAL</span>
+          </div>
+              {/* Canoline */}
+          <div className="group cursor-pointer transition-all duration-300 hover:scale-110 grayscale hover:grayscale-0 opacity-60 hover:opacity-100" onClick={() => window.open('https://www.canoline.in/', '_blank')}>
+              <img 
+                src={Canolone} 
+                alt="Canoline Logo" 
+                className="h-12 w-auto object-contain"
+                referrerPolicy="no-referrer"
+              />
           </div>
 
         </motion.div>

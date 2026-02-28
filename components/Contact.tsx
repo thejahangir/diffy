@@ -1,16 +1,52 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { Button } from './ui/Button';
-import { User, Mail, Smartphone, Send } from 'lucide-react';
+import { User, Mail, Smartphone, Send, Loader2 } from 'lucide-react';
 import { motion } from 'framer-motion';
+import emailjs from '@emailjs/browser';
 
 export const Contact: React.FC = () => {
+  const formRef = useRef<HTMLFormElement>(null);
+  const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
   const contactInfo = [
-    { loc: "UAE", num: "+971-551027497" },
+    { loc: "UAE", num: "+971547968579" },
     { loc: "Qatar", num: "+974 6654 7930" },
     { loc: "West Bengal", num: "+91-9007222405" },
     { loc: "Bihar", num: "+91-9830051693" },
-    { loc: "Maharashtra", num: "+91-8668247160" },
   ];
+
+  const sendEmail = (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setStatus('idle');
+
+    if (!formRef.current) return;
+
+    emailjs
+      .sendForm(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID || 'service_id',
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'template_id',
+        formRef.current,
+        {
+          publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'public_key',
+        }
+      )
+      .then(
+        () => {
+          setLoading(false);
+          setStatus('success');
+          if (formRef.current) formRef.current.reset();
+          setTimeout(() => setStatus('idle'), 5000);
+        },
+        (error) => {
+          console.error('FAILED...', error.text);
+          setLoading(false);
+          setStatus('error');
+          setTimeout(() => setStatus('idle'), 5000);
+        },
+      );
+  };
 
   return (
     <section id="contact" className="py-24 bg-slate-950 relative overflow-hidden border-t border-slate-900">
@@ -34,7 +70,7 @@ export const Contact: React.FC = () => {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 max-w-6xl mx-auto items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 max-w-6xl mx-auto">
 
             {/* Form Section */}
             <motion.div
@@ -42,15 +78,17 @@ export const Contact: React.FC = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2, duration: 0.6 }}
-              className="bg-slate-900/50 p-8 md:p-10 rounded-3xl border border-slate-800 shadow-2xl relative overflow-hidden group"
+              className="bg-slate-900/50 p-8 md:p-10 rounded-3xl border border-slate-800 shadow-2xl relative overflow-hidden group h-full"
             >
                <div className="absolute inset-0 bg-gradient-to-br from-brand-blue/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
                
-               <form className="space-y-6 relative z-10">
+               <form ref={formRef} onSubmit={sendEmail} className="space-y-6 relative z-10">
                   <div className="relative group">
                     <User className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-500 group-focus-within:text-brand-blue transition-colors" />
                     <input
                       type="text"
+                      name="user_name"
+                      required
                       placeholder="Full name"
                       className="w-full bg-slate-950/50 border border-slate-700 rounded-xl py-4 px-4 text-white placeholder:text-slate-500 focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue/50 transition-all"
                     />
@@ -60,6 +98,8 @@ export const Contact: React.FC = () => {
                     <Mail className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-500 group-focus-within:text-brand-blue transition-colors" />
                     <input
                       type="email"
+                      name="user_email"
+                      required
                       placeholder="E-mail Address"
                       className="w-full bg-slate-950/50 border border-slate-700 rounded-xl py-4 px-4 text-white placeholder:text-slate-500 focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue/50 transition-all"
                     />
@@ -69,6 +109,7 @@ export const Contact: React.FC = () => {
                     <Smartphone className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-500 group-focus-within:text-brand-blue transition-colors" />
                     <input
                       type="tel"
+                      name="user_phone"
                       placeholder="Mobile"
                       className="w-full bg-slate-950/50 border border-slate-700 rounded-xl py-4 px-4 text-white placeholder:text-slate-500 focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue/50 transition-all"
                     />
@@ -76,16 +117,32 @@ export const Contact: React.FC = () => {
 
                   <div className="relative group">
                     <textarea
+                      name="message"
+                      required
                       placeholder="Your Message *"
                       rows={5}
                       className="w-full bg-slate-950/50 border border-slate-700 rounded-xl py-4 px-4 text-white placeholder:text-slate-500 focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue/50 transition-all resize-none"
                     ></textarea>
                   </div>
 
-                  <Button className="w-full !py-4 text-lg shadow-brand-blue/20">
-                      Send Message
-                      <Send className="ml-2 w-4 h-4" />
+                  <Button type="submit" disabled={loading} className="w-full !py-4 text-lg shadow-brand-blue/20 disabled:opacity-70 disabled:cursor-not-allowed">
+                      {loading ? (
+                        <span className="flex items-center justify-center gap-2">
+                          <Loader2 className="w-5 h-5 animate-spin" /> Sending...
+                        </span>
+                      ) : (
+                        <span className="flex items-center justify-center gap-2">
+                          Send Message <Send className="w-4 h-4" />
+                        </span>
+                      )}
                   </Button>
+                  
+                  {status === 'success' && (
+                    <p className="text-green-500 text-center text-sm mt-2">Message sent successfully!</p>
+                  )}
+                  {status === 'error' && (
+                    <p className="text-red-500 text-center text-sm mt-2">Failed to send message. Please try again.</p>
+                  )}
                </form>
             </motion.div>
 
@@ -95,8 +152,10 @@ export const Contact: React.FC = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3, duration: 0.6 }}
-              className="flex flex-col space-y-3 pt-2"
+              className="bg-slate-900/50 p-8 md:p-10 rounded-3xl border border-slate-800 shadow-2xl relative overflow-hidden group h-full"
             >
+                 <div className="absolute inset-0 bg-gradient-to-br from-brand-blue/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                 <div className="relative z-10 flex flex-col space-y-4 h-full">
                  <h3 className="text-2xl font-bold text-white mb-2">Global Offices</h3>
                  {contactInfo.map((info, idx) => (
                    <motion.div 
@@ -123,6 +182,7 @@ export const Contact: React.FC = () => {
                     <a href="mailto:support@dijiffy.com" className="text-brand-blue hover:text-white font-medium transition-colors flex items-center gap-2 text-sm">
                       <Mail className="w-4 h-4" /> support@dijiffy.com
                     </a>
+                 </div>
                  </div>
             </motion.div>
 

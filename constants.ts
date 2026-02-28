@@ -44,7 +44,7 @@ export const SERVICES: ServiceItem[] = [
   {
     id: 'ui-ux',
     title: 'UI & UX Design',
-    description: 'Immersive user interfaces and seamless experiences that drive engagement.',
+    description: 'Immersive user interfaces, logo creation, and graphic design that drive engagement and brand identity.',
     outcome: 'Maximize user retention.',
     icon: Palette,
     color: 'text-brand-orange',
@@ -130,21 +130,60 @@ export const TRAINING_PROGRAMS: TrainingProgram[] = [
     description: "Master modern web development with React, Node.js, and cloud-native architectures.",
     icon: Code2,
     topics: ["React & Next.js", "Node.js Microservices", "PostgreSQL & Redis"],
-    level: "Intermediate to Advanced"
+    level: "Intermediate to Advanced",
+    modules: [
+      "Module 1: Advanced React Patterns & Performance",
+      "Module 2: Server-Side Rendering with Next.js",
+      "Module 3: Microservices Architecture with Node.js",
+      "Module 4: Database Design & Optimization (PostgreSQL)",
+      "Module 5: State Management Strategies",
+      "Module 6: Testing & CI/CD for Frontend"
+    ]
   },
   {
     title: "AI & Data Engineering",
     description: "Practical implementation of LLMs, RAG pipelines, and predictive analytics models.",
     icon: Brain,
     topics: ["Python & PyTorch", "LLM Integration", "Data Pipelines"],
-    level: "Advanced"
+    level: "Advanced",
+    modules: [
+      "Module 1: Foundations of Data Engineering",
+      "Module 2: Building Scalable Data Pipelines",
+      "Module 3: Introduction to LLMs & Prompt Engineering",
+      "Module 4: RAG (Retrieval-Augmented Generation) Implementation",
+      "Module 5: Fine-tuning Models for Enterprise Use",
+      "Module 6: AI Ethics & Governance"
+    ]
   },
   {
     title: "DevOps & Cloud",
     description: "Build robust CI/CD pipelines and manage Kubernetes clusters at scale.",
     icon: Server,
     topics: ["AWS & Azure", "Docker & Kubernetes", "Terraform"],
-    level: "Intermediate"
+    level: "Intermediate",
+    modules: [
+      "Module 1: Cloud Infrastructure Fundamentals (AWS/Azure)",
+      "Module 2: Containerization with Docker",
+      "Module 3: Kubernetes Orchestration & Management",
+      "Module 4: Infrastructure as Code (Terraform)",
+      "Module 5: CI/CD Pipeline Automation",
+      "Module 6: Monitoring, Logging & Observability"
+    ]
+  },
+  {
+    title: "ServiceNow Mastery",
+    description: "End-to-end training on ServiceNow administration, development, and workflow automation.",
+    icon: Workflow,
+    topics: ["ITSM & ITOM", "Flow Designer", "Scripting & Integrations"],
+    level: "Beginner to Advanced",
+    modules: [
+      "Module 1: ServiceNow Platform Fundamentals",
+      "Module 2: ITSM Process Configuration",
+      "Module 3: Flow Designer & Workflow Automation",
+      "Module 4: Scripting in ServiceNow (Client & Server)",
+      "Module 5: Service Portal Development",
+      "Module 6: Integration Hub & REST APIs"
+    ]
   }
 ];
 

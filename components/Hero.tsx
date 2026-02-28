@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Button } from './ui/Button';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { ChevronRight, Phone } from 'lucide-react';
 
 export const Hero: React.FC = () => {
+  const { scrollY } = useScroll();
+  const y = useTransform(scrollY, [0, 500], [0, 200]);
   const [particles, setParticles] = useState<Array<{
     id: number;
     x: number;
@@ -35,7 +37,10 @@ export const Hero: React.FC = () => {
     <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden">
       {/* Background Image with Low Opacity */}
       <div className="absolute inset-0 -z-20">
-          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop')] bg-cover bg-center opacity-20 mix-blend-screen"></div>
+          <motion.div 
+            style={{ y }}
+            className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop')] bg-cover bg-center opacity-40 mix-blend-screen"
+          ></motion.div>
           <div className="absolute inset-0 bg-gradient-to-b from-slate-950/50 via-slate-950/80 to-slate-950"></div>
       </div>
 
@@ -86,7 +91,7 @@ export const Hero: React.FC = () => {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-cyan opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-blue"></span>
             </span>
-            Accepting new enterprise projects for Q4
+            Accepting new enterprise projects NOW
             <ChevronRight className="w-3 h-3" />
           </motion.div>
 

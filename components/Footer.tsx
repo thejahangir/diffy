@@ -1,5 +1,6 @@
 import React from 'react';
 import { Linkedin, Github, Facebook, ArrowRight, Mail } from 'lucide-react';
+import LogoDiffy from "../src/assets/img/logo.png";
 
 // Custom X (Twitter) Icon component
 const XIcon = ({ className }: { className?: string }) => (
@@ -44,13 +45,8 @@ export const Footer: React.FC = () => {
           {/* Brand Column */}
           <div className="md:col-span-4 lg:col-span-4">
             <a href="#" className="flex items-center gap-2 mb-6 group w-fit">
-              <div className="relative w-8 h-8 flex items-center justify-center">
-                <div className="absolute inset-0 bg-gradient-to-tr from-brand-blue to-brand-cyan rounded-lg opacity-20 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <span className="relative text-white font-bold text-lg">D</span>
-              </div>
-              <span className="font-bold text-2xl tracking-tight text-white">
-                dijiffy<span className="text-brand-blue">.</span>
-              </span>
+           <img src={LogoDiffy} className="logo-diffy-footer" />
+              
             </a>
             <p className="text-slate-400 text-sm leading-relaxed max-w-sm mb-8">
               Engineering the future of digital business. We build high-performance software, AI systems, and strategic platforms for global market leaders.

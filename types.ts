@@ -34,4 +34,5 @@ export interface TrainingProgram {
   icon: LucideIcon;
   topics: string[];
   level: string;
+  modules: string[];
 }
