@@ -36,20 +36,7 @@ export const Partners: React.FC = () => {
             </div>
           </div>
 
-          {/* Bihar Skill Development Mission */}
-          <div className="group cursor-pointer flex items-center gap-3 transition-all duration-300 hover:scale-110 grayscale hover:grayscale-0 opacity-60 hover:opacity-100">
-             <div className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-white relative overflow-hidden flex items-center justify-center p-1 shadow-none group-hover:shadow-[0_0_20px_rgba(255,255,255,0.4)] transition-all duration-300">
-                {/* Abstract logo representation */}
-                <div className="w-full h-full rounded-full border-[3px] border-t-red-500 border-r-green-500 border-b-blue-500 border-l-yellow-500 opacity-80 bg-white">
-                  <div className="w-full h-full flex items-center justify-center text-[0.5rem] text-black font-bold">BSDM</div>
-                </div>
-             </div>
-             {/* <div className="flex flex-col items-start text-left">
-                 <span className="text-[0.6rem] font-bold text-slate-300 leading-tight">Bihar Skill</span>
-                 <span className="text-[0.6rem] font-bold text-slate-300 leading-tight">Development</span>
-                 <span className="text-[0.6rem] font-bold text-slate-300 leading-tight">Mission</span>
-             </div> */}
-          </div>
+
 
           {/* Tutorria */}
 

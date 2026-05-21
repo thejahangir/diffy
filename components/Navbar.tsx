@@ -30,6 +30,8 @@ export const Navbar: React.FC = () => {
         top: offsetPosition,
         behavior: 'smooth'
       });
+    } else {
+      window.location.hash = `#${id}`;
     }
   };
 

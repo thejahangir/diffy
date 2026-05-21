@@ -52,8 +52,13 @@ export const Footer: React.FC = () => {
               Engineering the future of digital business. We build high-performance software, AI systems, and strategic platforms for global market leaders.
             </p>
             <div className="flex gap-4">
-              {[XIcon, Linkedin, Github, Facebook].map((Icon, i) => (
-                <a key={i} href="#" className="w-10 h-10 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-400 hover:bg-brand-blue hover:border-brand-blue hover:text-white transition-all duration-300">
+              {[
+                { Icon: XIcon, href: '#' },
+                { Icon: Linkedin, href: 'https://www.linkedin.com/company/dijiffy-solutions/' },
+                { Icon: Github, href: '#' },
+                { Icon: Facebook, href: '#' }
+              ].map(({ Icon, href }, i) => (
+                <a key={i} href={href} target={href !== '#' ? "_blank" : undefined} rel={href !== '#' ? "noopener noreferrer" : undefined} className="w-10 h-10 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-400 hover:bg-brand-blue hover:border-brand-blue hover:text-white transition-all duration-300">
                   <Icon className="w-4 h-4" />
                 </a>
               ))}
@@ -112,7 +117,7 @@ export const Footer: React.FC = () => {
              
              <div className="mt-6 pt-6 border-t border-slate-700/50 flex flex-col gap-1">
                  <div className="text-xs text-slate-500 uppercase tracking-wider font-bold mb-1">Contact Support</div>
-                 <a href="mailto:hello@dijiffy.com" className="text-white hover:text-brand-blue transition-colors text-sm font-medium">hello@dijiffy.com</a>
+                 <a href="mailto:support@dijiffy.com" className="text-white hover:text-brand-blue transition-colors text-sm font-medium">support@dijiffy.com</a>
              </div>
           </div>
 

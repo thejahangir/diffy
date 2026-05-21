@@ -25,11 +25,11 @@ export const Contact: React.FC = () => {
 
     emailjs
       .sendForm(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID || 'service_id',
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'template_id',
+        import.meta.env.VITE_EMAILJS_SERVICE_ID || 'service_msc78ts',
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'template_w9qmspq',
         formRef.current,
         {
-          publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'public_key',
+          publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'qb9r1lqQ8XUePMXfv',
         }
       )
       .then(
